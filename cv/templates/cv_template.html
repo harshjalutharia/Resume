@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ cv.name }}'s CV</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .section { margin-bottom: 20px; }
+        h2 { border-bottom: 2px solid #333; padding-bottom: 5px; }
+    </style>
+</head>
+<body>
+    <h1 style="text-align:center;">{{ cv.name }}</h1>
+    <p style="text-align:center;"><strong>Phone:</strong> {{ cv.phone }}  |  <strong>Email:</strong> {{ cv.email }}</p>
+    <p style="text-align:center;"><strong>Location:</strong> {{ cv.location }}  |  <strong>LinkedIn:</strong> {{ cv.linkedin }}</p>
+
+    <div class="section">
+        <h2>Education</h2>
+        <ul>
+            {% for edu in cv.education %}
+                <li><strong>{{ edu.degree }}</strong> ({{ edu.year }}) from {{ edu.institution }} - {{ edu.grade }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    
+    <div class="section">
+        <h2>Internships</h2>
+        <ul>
+            {% for job in cv.internships %}
+                <li><strong>Internship at {{ job.company }}</strong> ({{ job.time }})</li>
+                <ul>
+                    <li>{{job.point1}}</li>
+                    <li>{{job.point2}}</li>
+                </ul>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Academic Research and Projects</h2>
+        <ul>
+            {% for proj in cv.research %}
+                <li><strong>{{ proj.title }}</strong> ({{ proj.time }})</li>
+                <ul>
+                    <li>{{proj.point1}}</li>
+                    <li>{{proj.point2}}</li>
+                </ul>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Professional Projects</h2>
+        <ul>
+            {% for proj in cv.projects %}
+                <li><strong>{{ proj.title }}</strong> ({{ proj.time }})</li>
+                <ul>
+                    <li>{{proj.point1}}</li>
+                    <li>{{proj.point2}}</li>
+                </ul>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Academic Achievements</h2>
+        <ul>
+            {% for achievement in cv.achievements %}
+                <li>{{ achievement.entry }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Extra-Curricular Activities</h2>
+        <ul>
+            {% for activity in cv.extraactivities %}
+                <li>{{ activity.entry }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Skills and Certifications</h2>
+        <ul>
+            {% for skill in cv.skills %}
+                <li>{{ skill.entry }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
